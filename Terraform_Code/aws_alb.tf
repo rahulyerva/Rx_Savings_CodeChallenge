@@ -1,5 +1,5 @@
 resource "aws_lb" "test" {
-    name               = "rxelb"
+    name               = var.alb_name
     internal           = false
     load_balancer_type = "application"
     security_groups    = [aws_security_group.allow_tls.id]
@@ -27,8 +27,3 @@ resource "aws_lb_target_group" "default" {
     target_type = "instance"
 }
 
-# resource "aws_lb_target_group_attachment" "test" {
-#   target_group_arn = aws_lb_target_group.default.arn
-#   target_id        = aws_instance.test.id
-#   port             = 80
-# }
